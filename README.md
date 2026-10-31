@@ -5,11 +5,14 @@ Plain HTML, no build step.
 
 ## Hosting
 
-Served from keystoneserver1 by Caddy. GitHub Pages is not used, so there is no `CNAME` file.
+Served by **GitHub Pages** from the `main` branch (root), custom domain `greatlakesmechanic.com` (see `CNAME`).
+Cloudflare DNS: `CNAME @ -> ncombs10101.github.io` and `CNAME www -> ncombs10101.github.io`, both DNS only.
 
-Document root: `/tank/projects/greatlakesmechanic-www` (a clone of this repo).
+Deploy = push to `main`. GitHub rebuilds in about a minute.
 
-Caddy vhost:
+### Alternate: keystoneserver1
+
+The same files can be served by Caddy on keystoneserver1 from a clone at `/tank/projects/greatlakesmechanic-www`:
 
 ```
 greatlakesmechanic.com {
@@ -27,10 +30,4 @@ www.greatlakesmechanic.com {
 }
 ```
 
-## Deploying
-
-```
-git -C /tank/projects/greatlakesmechanic-www pull
-```
-
-No restart needed; Caddy serves from disk.
+To use it, point the A record at the server instead and turn GitHub Pages off.
